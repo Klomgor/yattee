@@ -612,6 +612,9 @@ final class InvidiousAPI: Service, ObservableObject, VideosAPI {
             // Some instances are not configured properly and return thumbnail links
             // with an incorrect scheme or a missing port.
             components.scheme = accountUrlComponents.scheme
+            if (components.host ?? "") == "" {
+                components.host = accountUrlComponents.host
+            }
             components.port = accountUrlComponents.port
 
             // If basic HTTP authentication is used,
